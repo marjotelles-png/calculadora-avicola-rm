@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es-CO" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Calculadora Avícola RM</title>
+  <meta name="description" content="Calculadora Avícola RM: haz en segundos las cuentas de tu galpón de gallinas ponedoras. De RM Agroinversiones.">
+  <meta name="theme-color" content="#0B0B0B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Calc. Avícola">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="splash" aria-hidden="true"><img src="icons/logo-calculadora-avicola-1024.png" alt=""></div>
+  <header class="top">
+    <img class="top-logo" src="icons/logo-rm.png" alt="RM Agroinversiones">
+    <div class="top-txt">
+      <span class="top-title">CALCULADORA AVÍCOLA</span>
+      <span class="top-sub" id="topFarm">Mi granja</span>
+    </div>
+    <a class="top-install" href="https://rm-postura.expo.app/?src=calculadora" target="_blank" rel="noopener" aria-label="Descargar la app RM Postura">
+      <img src="icons/rm-postura.png" alt="" width="22" height="22"><span class="long">Descargar app</span><span class="short">App</span></a>
+  </header>
+  <main id="view" tabindex="-1"></main>
+  <nav class="tabs" aria-label="Navegación principal">
+    <button data-tab="inicio" aria-label="Inicio"></button>
+    <button data-tab="calculadoras" aria-label="Calculadoras"></button>
+    <button data-tab="panel" aria-label="Panel"></button>
+    <button data-tab="ajustes" aria-label="Ajustes"></button>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
