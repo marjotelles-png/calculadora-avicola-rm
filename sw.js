@@ -1,5 +1,5 @@
 // Calculadora Avícola RM · funciona sin internet
-const VERSION = 'calc-avicola-rm-v1.3.0';
+const VERSION = 'calc-avicola-rm-v1.4.0';
 const LOCAL = ['./', './index.html', './styles.css', './app.js', './calc.js', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-192.png', './icons/icon-maskable-512.png',
   './icons/apple-touch-icon.png', './icons/logo-rm.png', './icons/rm-postura.png', './icons/novato.png', './icons/logo-calculadora-avicola-1024.png', './Calculadora-Avicola-RM.xlsx'];

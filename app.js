@@ -11,6 +11,14 @@ const WHATSAPP_AVES = '573145182016';
 const POSTURA_URL = 'https://rm-postura.expo.app/?src=calculadora';
 const POSTURA_DEMO = 'https://rm-postura.expo.app/demo?src=calculadora';
 const CURSOS_URL = 'https://pay.hotmart.com/I104270666R?off=ovjoq7m4&src=calculadora';
+const APP_URL = 'https://marjotelles-png.github.io/calculadora-avicola-rm/';
+const REDES = [
+  { id: 'instagram', nombre: 'Instagram', usuario: '@rmagroinversiones', url: 'https://www.instagram.com/rmagroinversiones/' },
+  { id: 'facebook', nombre: 'Facebook', usuario: 'RM Agroinversiones', url: 'https://www.facebook.com/576620952207601' },
+  { id: 'youtube', nombre: 'YouTube', usuario: 'RM Agroinversiones', url: 'https://www.youtube.com/channel/UCsc1Qw4T6Btqvdwoixju0IA?sub_confirmation=1' },
+  { id: 'tiktok', nombre: 'TikTok', usuario: '@rmagroinversiones', url: 'https://www.tiktok.com/@rmagroinversiones' },
+];
+const TEXTO_COMPARTIR = `🐔 Mira esta calculadora GRATIS para gallinas ponedoras de RM Agroinversiones: postura, alimento, costo por cubeta y ganancia en segundos. Se instala en el celular: ${APP_URL}?src=compartido`;
 
 function load() {
   try {
@@ -91,6 +99,11 @@ const P = {
   download: 'M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14',
   phone: 'M8 3h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM11 18h2',
   trash: 'M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3',
+  instagram: 'M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3zM12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17.3 6.7h.01',
+  facebook: 'M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5.5v4H8v7h4v-7h3l.7-4H12V7.8c0-.5.3-.8.8-.8H15z',
+  youtube: 'M3 8.6A3.6 3.6 0 0 1 6.6 5h10.8A3.6 3.6 0 0 1 21 8.6v6.8a3.6 3.6 0 0 1-3.6 3.6H6.6A3.6 3.6 0 0 1 3 15.4zM10 9.3v5.4l4.6-2.7z',
+  heart: 'M12 20s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 7.4 4.2 4.2 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z',
+  tiktok: 'M14 3v11.6a3.4 3.4 0 1 1-3.4-3.4M14 3c.6 2.7 2.5 4.5 5.2 4.7',
 };
 const ico = (n) => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${P[n]}"/></svg>`;
 
@@ -432,6 +445,22 @@ function vitrinaHTML() {
     <a class="vit" href="https://wa.me/${WHATSAPP_AVES}" target="_blank" rel="noopener"><img class="vit-logo" src="icons/logo-rm.png" alt="RM Agroinversiones"><span><b>Pollitas y gallinas</b>Ventas en Colombia. Escríbenos al +57 314 518 2016.</span></a>
   </div>`;
 }
+function redesHTML(titulo = 'Síguenos en redes') {
+  return `<section class="card social"><p class="card-title">${ico("heart")} ${esc(titulo)}</p>
+    <p class="lead" style="margin-bottom:12px">Consejos, clases gratis y novedades de RM Agroinversiones.</p>
+    <div class="social-grid">${REDES.map((r) => `<a class="soc soc-${r.id}" href="${r.url}" target="_blank" rel="noopener">${ico(r.id)}<span><b>${esc(r.nombre)}</b>${esc(r.usuario)}</span></a>`).join('')}</div>
+    <a class="btn wa block" style="margin-top:12px" href="https://wa.me/?text=${encodeURIComponent(TEXTO_COMPARTIR)}" target="_blank" rel="noopener">${ico('share')} Compártela con un amigo</a>
+  </section>`;
+}
+function sigueView(nombre) {
+  view.innerHTML = `<div class="welcome">
+    <img class="welcome-logo" src="icons/logo-calculadora-avicola-1024.png" alt="Calculadora Avícola RM" style="width:120px;height:120px">
+    <h1>¡Listo, ${esc(nombre)}!</h1>
+    <p class="lead">Tu calculadora es un regalo de RM Agroinversiones. Solo te pedimos dos cosas: <b>síguenos en nuestras redes</b> y <b>compártela con un amigo avicultor</b>. Así nos ayudas a seguir creando herramientas gratis.</p>
+    ${redesHTML('1 · Síguenos')}
+    <button class="btn gold block" style="margin-top:16px" data-start>Empezar a calcular</button>
+  </div>`;
+}
 function footer() {
   return `<div class="footer"><img src="icons/logo-rm.png" alt="">Calculadora Avícola RM · RM Agroinversiones<br>Cursos online de gallinas ponedoras</div>`;
 }
@@ -464,6 +493,7 @@ function inicioView() {
     ${promoMini('El diagnóstico de hoy es una foto. ¿Quieres ver la película completa de tu lote, con alertas automáticas?')}
     <button class="btn block" style="margin-top:14px" data-go="calculadoras">${ico('grid')} Ver las 16 calculadoras</button>
     ${vitrinaHTML()}
+    <div style="margin-top:14px">${redesHTML()}</div>
     ${footer()}</div>`;
 }
 function tileHTML(c) {
@@ -517,6 +547,7 @@ function ajustesView() {
       <button class="btn block" style="margin-top:10px" data-clear>${ico('trash')} Borrar mis datos</button>
     </section>
     ${vitrinaHTML()}
+    <div style="margin-top:14px">${redesHTML()}</div>
     <div class="note">${ico('info')}<span>Los valores de referencia son orientativos. Ajústalos a la guía de tu línea genética y consulta a tu veterinario para vacunas y medicamentos.</span></div>
     <p class="muted" style="text-align:center;margin-top:14px">Versión 1.0 · octubre 2026</p>${footer()}</div>`;
 }
@@ -562,9 +593,7 @@ document.addEventListener('submit', (e) => {
   const granja = String(f.get('granja') || '').trim().slice(0, 40);
   Object.assign(state.settings, { nombre, granja: granja || 'Mi granja', moneda: String(f.get('moneda') || 'COP $'), listo: true });
   save(); recompute(); applyFarm();
-  document.body.classList.remove('onboarding');
-  location.hash = '#/inicio'; route();
-  toast(`¡Hola, ${nombre}!`);
+  sigueView(nombre); window.scrollTo(0, 0);
 });
 
 function route() {
@@ -606,6 +635,7 @@ document.addEventListener('click', (e) => {
   if (e.target.classList && e.target.classList.contains('sheet-wrap')) { e.target.remove(); return; }
   const t = e.target.closest('button, a'); if (!t) return;
   if ('closeSheet' in t.dataset) { const s = document.getElementById('sheet'); if (s) s.remove(); return; }
+  if ('start' in t.dataset) { document.body.classList.remove('onboarding'); location.hash = '#/inicio'; route(); toast(`¡Hola, ${state.settings.nombre}!`); return; }
   if (t.closest('#sheet') && t.tagName === 'A') { setTimeout(() => { const s = document.getElementById('sheet'); if (s) s.remove(); }, 300); return; }
   if (t.dataset.tab) return go(t.dataset.tab);
   if (t.dataset.go) return go(t.dataset.go);
